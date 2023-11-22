@@ -11,6 +11,11 @@ from streamlit_shadcn_ui import slider, input, textarea, radio_group, switch
 slider_value = slider(default_value=[20, 80], min_value=0, max_value=100, step=5, label="Select a Range", key="slider1")
 st.write("Slider Value:", slider_value)
 
+
+choice = ui.select(options=["Apple", "Banana", "Orange"])
+st.markdown(f"Currrent select value: {choice}")
+
+
 # Input Component
 input_value = input(default_value="Hello, Streamlit!", type='text', placeholder="Enter text here", key="input1")
 st.write("Input Value:", input_value)
