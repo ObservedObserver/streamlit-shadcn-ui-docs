@@ -1,5 +1,6 @@
 import streamlit as st
 import streamlit_shadcn_ui as ui
+import pandas as pd
 with open("docs/introduction.md", "r") as f:
     st.markdown(f.read())
 
@@ -7,16 +8,33 @@ with open("docs/introduction.md", "r") as f:
 
 from streamlit_shadcn_ui import slider, input, textarea, radio_group, switch
 
+ui.tabs(options=['Overview', 'Analytics', 'Reports', 'Notifications'], defaultValue='Overview', key="main_tabs")
+
+cols = st.columns(3)
+with cols[0]:
+    ui.card(title="Total Revenue", content="$45,231.89", description="+20.1% from last month", key="card1")
+with cols[1]:
+    ui.card(title="Subscriptions", content="+2350", description="+180.1% from last month", key="card2")
+with cols[2]:
+    ui.card(title="Sales", content="+12,234", description="+19% from last month", key="card3")
+
+# Sample data
+data = [
+    {"invoice": "INV001", "paymentStatus": "Paid", "totalAmount": 500, "paymentMethod": "Credit Card"},
+    {"invoice": "INV002", "paymentStatus": "Unpaid", "totalAmount": 200, "paymentMethod": "Cash"},
+    {"invoice": "INV003", "paymentStatus": "Paid", "totalAmount": 150, "paymentMethod": "Debit Card"},
+    {"invoice": "INV004", "paymentStatus": "Unpaid", "totalAmount": 350, "paymentMethod": "Credit Card"},
+    {"invoice": "INV005", "paymentStatus": "Paid", "totalAmount": 400, "paymentMethod": "PayPal"},
+    # Add more records as needed
+]
+
+# Creating a DataFrame
+invoice_df = pd.DataFrame(data)
+
+ui.table(data=invoice_df, maxHeight=300)
+
 ui_result = ui.button("Button", key="btn")
 st.write("UI Button Clicked:", ui_result)
-
-st.write("before", st.session_state)
-
-st_result = st.button("Button", key="btn2")
-st.write("ST Button Clicked:", st_result)
-
-
-st.write("after", st.session_state)
 
 
 # Slider Component
@@ -44,6 +62,6 @@ st.write("Selected Radio Option:", radio_value)
 switch_value = switch(default_checked=True, label="Toggle Switch", key="switch1")
 st.write("Switch is On:", switch_value)
 
-st.header("Button Component")
+st.subheader("Alert Dialog")
 trigger_btn = ui.button(text="Trigger Button", key="trigger_btn")
 ui.alert_dialog(show=trigger_btn, title="Alert Dialog", description="This is an alert dialog", confirm_label="OK", cancel_label="Cancel", key="alert_dialog1")
