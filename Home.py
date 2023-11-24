@@ -4,10 +4,17 @@ import pandas as pd
 import numpy as np
 from local_components import buttons_container, card_container
 
-with open("docs/introduction.md", "r") as f:
-    st.markdown(f.read())
+# with open("docs/introduction.md", "r") as f:
+#     st.markdown(f.read())
 
 # ui.date_picker()
+
+st.header("Streamlit Shadcn UI")
+st.caption("A Streamlit component library for building beautiful apps easily. Bring the power of Shadcn UI to your Streamlit apps!")
+st.caption("Get started with pip install streamlit-shadcn-ui")
+with buttons_container(unit_width="100px"):
+    ui.button(text="Get Started", key="btn1")
+    ui.button(text="Github", variant="outline", key="btn2")
 
 from streamlit_shadcn_ui import slider, input, textarea, radio_group, switch
 
