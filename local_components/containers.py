@@ -57,11 +57,42 @@ def buttons_container(unit_width: str, key=None):
     {
         display: flex;
         flex-direction: row;
+        item-align: center;
+        justify-content: flex-start;
     }
     """,
     f"""
     > div:not(:first-child) {{
         width: {unit_width} !important;
+        min-width: 1px;
+        display: inline;
+    }}
+    """,
+    f"""
+    > div:first-child {{
+        display: none;
+    }}
+    """,
+    f"""
+    > div:not(:first-child) > iframe {{
+        display: inline-block;
+        width: auto !important;
+        min-width: 1px;
+        border: none;
+    }}
+    """
+    ])
+
+def float_container(direction: str="left", key=None):
+    return stylable_container(key=key, css_styles=[
+    f"""
+    {{
+        float: {direction};
+    }}
+    """,
+    f"""
+    > div:not(:first-child) {{
+        float: {direction};
         min-width: 1px;
         display: inline;
     }}

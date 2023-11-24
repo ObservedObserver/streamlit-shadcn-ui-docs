@@ -2,7 +2,7 @@ import streamlit as st
 import streamlit_shadcn_ui as ui
 import pandas as pd
 import numpy as np
-from local_components import buttons_container, card_container
+from local_components import buttons_container, card_container, float_container, h2
 
 # with open("docs/introduction.md", "r") as f:
 #     st.markdown(f.read())
@@ -10,22 +10,21 @@ from local_components import buttons_container, card_container
 # ui.date_picker()
 
 st.header("Streamlit Shadcn UI")
+ui.badges(badge_list=[("shadcn", "default"), ("in", "secondary"), ("streamlit", "destructive")], class_name="flex gap-2", key="badges1")
 st.caption("A Streamlit component library for building beautiful apps easily. Bring the power of Shadcn UI to your Streamlit apps!")
 st.caption("Get started with pip install streamlit-shadcn-ui")
 with buttons_container(unit_width="100px"):
     ui.button(text="Get Started", key="btn1")
-    ui.button(text="Github", variant="outline", key="btn2")
+    ui.link_button(text="Github", url="https://github.com/ObservedObserver/streamlit-shadcn-ui", variant="outline", key="btn2")
 
 from streamlit_shadcn_ui import slider, input, textarea, radio_group, switch
 
 
-
-    # with buttons_container(unit_width="100px"):
-    #     ui.button(text="Button", key="btn1")
-    #     ui.button(text="Button", key="btn2")
-    #     ui.button(text="Button", key="btn3")
+st.subheader("Dashboard")
 
 ui.tabs(options=['Overview', 'Analytics', 'Reports', 'Notifications'], defaultValue='Overview', key="main_tabs")
+
+ui.date_picker(key="date_picker1")
 
 cols = st.columns(3)
 with cols[0]:
