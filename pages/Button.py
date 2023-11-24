@@ -9,6 +9,15 @@ st.header("Button")
 
 with open("docs/components/button.md", "r") as f:
     st.markdown(f.read())
+
+st.subheader("Click Events")
+
+clicked = ui.button("Click", key="clk_btn")
+ui.button("Reset", key="reset_btn")
+st.write("UI Button Clicked:", clicked)
+
+st.subheader("Variants")
+
 variant_options = ["default", "destructive", "outline", "secondary", "ghost", "link"]
 
 for variant in variant_options:

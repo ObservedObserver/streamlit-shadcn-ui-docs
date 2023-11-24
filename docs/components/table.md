@@ -1,11 +1,8 @@
+### Basic Usage
+
+```py
 import pandas as pd
 import streamlit_shadcn_ui as ui
-import streamlit as st
-
-st.header("Table")
-with open("docs/components/table.md", "r") as f:
-    st.markdown(f.read())
-
 # Sample data
 data = [
     {"invoice": "INV001", "paymentStatus": "Paid", "totalAmount": 500, "paymentMethod": "Credit Card"},
@@ -21,3 +18,4 @@ invoice_df = pd.DataFrame(data)
 
 ui.table(data=invoice_df, maxHeight=300)
 
+```
