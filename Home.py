@@ -1,12 +1,22 @@
 import streamlit as st
 import streamlit_shadcn_ui as ui
 import pandas as pd
+import numpy as np
+from local_components import buttons_container, card_container
+
 with open("docs/introduction.md", "r") as f:
     st.markdown(f.read())
 
 # ui.date_picker()
 
 from streamlit_shadcn_ui import slider, input, textarea, radio_group, switch
+
+
+
+    # with buttons_container(unit_width="100px"):
+    #     ui.button(text="Button", key="btn1")
+    #     ui.button(text="Button", key="btn2")
+    #     ui.button(text="Button", key="btn3")
 
 ui.tabs(options=['Overview', 'Analytics', 'Reports', 'Notifications'], defaultValue='Overview', key="main_tabs")
 
@@ -31,7 +41,24 @@ data = [
 # Creating a DataFrame
 invoice_df = pd.DataFrame(data)
 
-ui.table(data=invoice_df, maxHeight=300)
+with card_container(key="table1"):
+    ui.table(data=invoice_df, maxHeight=300)
+
+def generate_sales_data():
+    np.random.seed(0)  # For reproducible results
+    months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    sales = np.random.randint(1000, 5000, size=len(months))
+    return pd.DataFrame({'Month': months, 'Sales': sales})
+
+with card_container(key="chart1"):
+    st.vega_lite_chart(generate_sales_data(), {
+        'mark': {'type': 'bar', 'tooltip': True, 'fill': 'rgb(173, 250, 29)', 'cornerRadiusEnd': 4 },
+        'encoding': {
+            'x': {'field': 'Month', 'type': 'ordinal'},
+            'y': {'field': 'Sales', 'type': 'quantitative', 'axis': {'grid': False}},
+        },
+    }, use_container_width=True)
+
 
 ui_result = ui.button("Button", key="btn")
 st.write("UI Button Clicked:", ui_result)
