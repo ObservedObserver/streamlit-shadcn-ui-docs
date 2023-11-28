@@ -13,8 +13,8 @@ with open("docs/components/button.md", "r") as f:
 st.subheader("Click Events")
 
 clicked = ui.button("Click", key="clk_btn")
-ui.button("Reset", key="reset_btn")
-st.write("UI Button Clicked:", clicked)
+reset = ui.button("Reset", key="reset_btn")
+st.write("UI Button Clicked:", clicked, reset)
 
 st.subheader("Variants")
 
