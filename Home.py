@@ -28,11 +28,13 @@ ui.date_picker(key="date_picker1")
 
 cols = st.columns(3)
 with cols[0]:
-    ui.card(title="Total Revenue", content="$45,231.89", description="+20.1% from last month", key="card1")
+    # with ui.card():
+    #     ui.element()
+    ui.card(title="Total Revenue", content="$45,231.89", description="+20.1% from last month", key="card1").render()
 with cols[1]:
-    ui.card(title="Subscriptions", content="+2350", description="+180.1% from last month", key="card2")
+    ui.card(title="Subscriptions", content="+2350", description="+180.1% from last month", key="card2").render()
 with cols[2]:
-    ui.card(title="Sales", content="+12,234", description="+19% from last month", key="card3")
+    ui.card(title="Sales", content="+12,234", description="+19% from last month", key="card3").render()
 
 def generate_sales_data():
     np.random.seed(0)  # For reproducible results
