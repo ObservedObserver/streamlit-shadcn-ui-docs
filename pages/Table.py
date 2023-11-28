@@ -21,3 +21,4 @@ invoice_df = pd.DataFrame(data)
 
 ui.table(data=invoice_df, maxHeight=300)
 
+st.write(ui.table)

@@ -9,4 +9,4 @@ with open("docs/components/tabs.md", "r") as f:
 
 ui.tabs(options=['PyGWalker', 'Graphic Walker', 'GWalkR', 'RATH'], defaultValue='PyGWalker', key="kanaries")
 
-
+st.write(ui.tabs)

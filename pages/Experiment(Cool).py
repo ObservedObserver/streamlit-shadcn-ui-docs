@@ -13,3 +13,5 @@ with ui.card(key="base_ele_card_l1"):
         ui.element("button", key="nst2_btn", text="Nest Submmit", variant="outline")
 
     ui.element("button", key="nst_btn", text="Hello World")
+
+st.write(ui.element)

@@ -27,3 +27,4 @@ for variant in variant_options:
 # ui.button(text="Click me!", variant="secondary", key="secondary")
 
 
+st.write(ui.button)

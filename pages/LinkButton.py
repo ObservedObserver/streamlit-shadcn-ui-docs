@@ -9,4 +9,4 @@ with open("docs/components/link_button.md", "r") as f:
 
 ui.link_button(text="Go To Github", url="https://github.com/ObservedObserver/streamlit-shadcn-ui", key="link_btn")
 
-
+st.write(ui.link_button)

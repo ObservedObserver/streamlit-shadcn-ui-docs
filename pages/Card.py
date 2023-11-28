@@ -16,4 +16,4 @@ with cols[1]:
 with cols[2]:
     ui.card(title="Total Revenue", content="$45,231.89", description="+20.1% from last month", key="card3")
 
-
+st.write(ui.card)

@@ -9,3 +9,5 @@ with open("docs/components/textarea.md", "r") as f:
 # Textarea Component
 textarea_value = ui.textarea(default_value="Type your message here...", placeholder="Enter longer text", key="textarea1")
 st.write("Textarea Value:", textarea_value)
+
+st.write(ui.textarea)

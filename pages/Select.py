@@ -9,3 +9,5 @@ with open("docs/components/select.md", "r") as f:
 choice = ui.select(options=["Apple", "Banana", "Orange"])
 
 st.markdown(f"Currrent value: {choice}")
+
+st.write(ui.select)

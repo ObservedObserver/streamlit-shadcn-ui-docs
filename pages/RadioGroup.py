@@ -13,3 +13,5 @@ radio_options = [
 ]
 radio_value = ui.radio_group(options=radio_options, default_value="B", key="radio1")
 st.write("Selected Radio Option:", radio_value)
+
+st.write(ui.radio_group)

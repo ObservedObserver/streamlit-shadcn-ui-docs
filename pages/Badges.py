@@ -9,3 +9,4 @@ with open("docs/components/badges.md", "r") as f:
 
 ui.badges(badge_list=[("default", "default"), ("secondary", "secondary"), ("outline", "outline"), ("Hello", "destructive"), ("World", "destructive")], class_name="flex gap-2", key="badges1")
 
+st.write(ui.badges)
