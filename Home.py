@@ -2,7 +2,8 @@ import streamlit as st
 import streamlit_shadcn_ui as ui
 import pandas as pd
 import numpy as np
-from local_components import buttons_container, card_container, float_container, h2
+from local_components import card_container
+from streamlit_shadcn_ui import slider, input, textarea, radio_group, switch
 
 # with open("docs/introduction.md", "r") as f:
 #     st.markdown(f.read())
@@ -13,12 +14,11 @@ st.header("Streamlit Shadcn UI")
 ui.badges(badge_list=[("shadcn", "default"), ("in", "secondary"), ("streamlit", "destructive")], class_name="flex gap-2", key="badges1")
 st.caption("A Streamlit component library for building beautiful apps easily. Bring the power of Shadcn UI to your Streamlit apps!")
 st.caption("Get started with pip install streamlit-shadcn-ui")
-with buttons_container(unit_width="100px"):
-    ui.button(text="Get Started", key="btn1")
-    ui.link_button(text="Github", url="https://github.com/ObservedObserver/streamlit-shadcn-ui", variant="outline", key="btn2")
 
-from streamlit_shadcn_ui import slider, input, textarea, radio_group, switch
 
+with ui.element("div", className="flex gap-2", key="buttons_group1"):
+    ui.element("button", text="Get Started", className="btn btn-primary", key="btn1")
+    ui.element("link_button", text="Github", url="https://github.com/ObservedObserver/streamlit-shadcn-ui", variant="outline", key="btn2")
 
 st.subheader("Dashboard")
 
