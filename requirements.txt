@@ -1,5 +1,5 @@
 streamlit
 pandas
-streamlit-shadcn-ui>=0.1.16
+streamlit-shadcn-ui>=0.1.17
 streamlit_extras
 pygwalker
