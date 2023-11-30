@@ -11,7 +11,7 @@ from streamlit_shadcn_ui import slider, input, textarea, radio_group, switch
 # ui.date_picker()
 
 st.header("Streamlit Shadcn UI")
-ui.badges(badge_list=[("shadcn", "default"), ("in", "secondary"), ("streamlit", "destructive")], class_name="flex gap-2", key="badges1")
+ui.badges(badge_list=[("shadcn", "default"), ("in", "secondary"), ("streamlit", "destructive")], class_name="flex gap-2", key="main_badges1")
 st.caption("A Streamlit component library for building beautiful apps easily. Bring the power of Shadcn UI to your Streamlit apps!")
 st.caption("Get started with pip install streamlit-shadcn-ui")
 
@@ -22,7 +22,7 @@ with ui.element("div", className="flex gap-2", key="buttons_group1"):
 
 st.subheader("Dashboard")
 
-ui.tabs(options=['Overview', 'Analytics', 'Reports', 'Notifications'], defaultValue='Overview', key="main_tabs")
+ui.tabs(options=['Overview', 'Analytics', 'Reports', 'Notifications'], default_value='Overview', key="main_tabs")
 
 ui.date_picker(key="date_picker1")
 
