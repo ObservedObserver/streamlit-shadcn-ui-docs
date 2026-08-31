@@ -2,8 +2,11 @@
 
 Available in **1.2.0**. Enter a number directly or use the decrement and
 increment buttons. The control uses the same shadcn Input and Button sources
-as the rest of the library. Since 1.2.1 it also inherits their default sizing,
-without the larger height and button-size overrides from 1.2.0.
+as the rest of the library. Version 1.2.1 restored their default sizing, and
+1.2.2 removed the remaining alignment, numeric typography, and `touch-action`
+overrides. The Input and Button receive no extra `className` or `style`
+overrides. With the current preset, the input is 32 px high and the step
+buttons are 32 by 32 px.
 
 ```python
 import streamlit as st
