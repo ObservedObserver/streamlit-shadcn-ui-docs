@@ -5,7 +5,7 @@ import streamlit_shadcn_ui as ui
 
 
 st.header("Number Input")
-st.caption("Type a value or use the large decrement and increment buttons.")
+st.caption("Type a value or use the decrement and increment buttons.")
 
 if "number_input_changes" not in st.session_state:
     st.session_state.number_input_changes = 0

@@ -1,8 +1,9 @@
 ## Number input with controls
 
 Available in **1.2.0**. Enter a number directly or use the decrement and
-increment buttons. The buttons have 44 px touch targets and use the same
-shadcn Input and Button sources as the rest of the library.
+increment buttons. The control uses the same shadcn Input and Button sources
+as the rest of the library. Since 1.2.1 it also inherits their default sizing,
+without the larger height and button-size overrides from 1.2.0.
 
 ```python
 import streamlit as st
