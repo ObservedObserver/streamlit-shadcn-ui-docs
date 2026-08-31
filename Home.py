@@ -56,6 +56,7 @@ component_pages = [
     st.Page("pages/InputOTP.py", title="Input OTP"),
     st.Page("pages/LinkButton.py", title="Link Button"),
     st.Page("pages/MetricCard.py", title="Metric Card"),
+    st.Page("pages/NumberInput.py", title="Number Input"),
     st.Page("pages/Pagination.py", title="Pagination"),
     st.Page("pages/Popover.py", title="Popover"),
     st.Page("pages/Progress.py", title="Progress"),
@@ -79,6 +80,15 @@ guide_pages = [
     st.Page("pages/Experiment(Cool).py", title="Component Lab"),
 ]
 
+use_case_pages = [
+    st.Page(
+        "pages/Elements.py",
+        title="V2 Elements",
+        icon=":material/account_tree:",
+        url_path="Elements",
+    ),
+]
+
 navigation = st.navigation(
     {
         "Start": [
@@ -88,6 +98,7 @@ navigation = st.navigation(
             legacy_showcase,
         ],
         "Components": component_pages,
+        "Use Cases": use_case_pages,
         "Guides": guide_pages,
     },
     position="sidebar",

@@ -8,8 +8,13 @@ Deployment mirror for the documentation app maintained in the
 The main repository is the source of truth for `Home.py`, `site_pages/`,
 `pages/`, `docs/components/`, and the published migration guide.
 
-Version 1.0 uses Streamlit Components V2 with checked-in shadcn source backed
+The app uses Streamlit Components V2 with checked-in shadcn source backed
 by Base UI. It requires Python 3.10 or newer and Streamlit 1.60 or newer.
+
+The deployed examples are pinned to `streamlit-shadcn-ui==1.2.0`. Open
+**Components > Number Input** for integer, decimal, negative, disabled, and
+nested Elements examples. **Use Cases > V2 Elements** demonstrates composing
+multiple controls in one React tree.
 
 ## Installation
 

@@ -8,12 +8,17 @@ This document covers every name exported by the released 0.1.x package root
 and every name exported by the V2-only 1.0 package root. The machine-readable
 coverage source is
 [v2-compatibility-matrix.json](./v2-compatibility-matrix.json), and a test
-prevents the 1.0 namespace from drifting away from it.
+prevents the public namespace from drifting away from it. The matrix also
+tracks additive 1.x APIs: `ui.elements` in 1.1.0 and `ui.number_input` in 1.2.0.
+Number Input is also available as `el.number_input` inside Elements trees;
+see the [numeric input contract](components/number_input.md).
 
 V2 is a conceptual catalog migration, not a source-compatible namespace swap.
-All V2 keys are optional and keyword-only. The library derives a private,
-deterministic mount identity when `key` is omitted; dynamic or reordered
-collections should still provide an explicit stable key. Unbounded
+Ordinary V2 helper keys are optional and keyword-only. The library derives a
+private, deterministic mount identity when `key` is omitted; dynamic or
+reordered collections should still provide an explicit stable key.
+`ui.elements` requires a root key plus stable keys for every stateful or action
+node. Unbounded
 `class_name` and `**kwargs` escape hatches were removed; supported variants,
 dimensions, labels, disabled states, bounds, and callbacks are explicit and
 runtime-validated.
@@ -73,15 +78,18 @@ runtime-validated.
 | `scroll_area` | Rename `tags` to `items`; replace `class_name` with bounded `height`, `width` | Stateless `None` | None | **Migrated.** Generated shadcn/Base UI Scroll Area |
 | `table` | DataFrame or record iterables remain; V1 `{dataKey,title}` and V2 `{key,label}` columns are both accepted; rename `maxHeight` to `max_height`; add `caption`, `width` | Stateless `None` | None | **Migrated.** Generated shadcn Table with bounded primitive cells |
 
-V2 also adds `badge`, `separator`, and `skeleton`, plus typed descriptors:
-`Choice`, `MenuItem`, `AccordionItem`, `BadgeItem`, `BreadcrumbItem`,
-`BreadcrumbSelection`, and `TableColumn`.
+V2 also adds `badge`, `separator`, `skeleton`, and the single-root nested
+composition API `elements`, plus typed descriptors: `Choice`, `MenuItem`,
+`AccordionItem`, `BadgeItem`, `BreadcrumbItem`, `BreadcrumbSelection`,
+`TableColumn`, `ElementEvent`, `ElementHandle`, and `ElementsBuilder`.
 
 ## Removed V1-only surfaces
 
 `element` and the V1 `with ui.card(...)` composition protocol are removed in
-1.0. V2 intentionally renders one independently isolated Streamlit component
-per call, so it does not reproduce the V1 experimental tree serializer.
+1.0. They are replaced by the typed, V2-only `with ui.elements(...)` tree
+protocol. Ordinary helper calls remain independently isolated components;
+`ui.elements` is the explicit path for one nested React root and does not
+preserve the V1 serializer or source compatibility.
 
 The following module-level helpers were implementation details of the
 multi-iframe architecture and receive no V2 adapters:
@@ -107,7 +115,7 @@ default invalidation, modal requests, and immutable key-to-kind binding.
 Application code must:
 
 1. read the function return value;
-2. use the documented no-argument callback when needed;
+2. use the documented callback signature when needed;
 3. treat all `ssui_v2_component_*` and
    `__streamlit_shadcn_ui_v2_runtime_v1__` entries as private;
 4. never reuse a key for a different V2 component kind, including across
