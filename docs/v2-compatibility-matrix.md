@@ -9,9 +9,9 @@ and every name exported by the V2-only 1.0 package root. The machine-readable
 coverage source is
 [v2-compatibility-matrix.json](./v2-compatibility-matrix.json), and a test
 prevents the public namespace from drifting away from it. The matrix also
-tracks additive 1.x APIs: `ui.elements` in 1.1.0 and `ui.number_input` in 1.2.0.
-Number Input is also available as `el.number_input` inside Elements trees;
-see the [numeric input contract](components/number_input.md).
+tracks additive 1.x APIs, including `ui.elements`, `ui.number_input`,
+`ui.combobox`, and `ui.input_group`. The latter three are also available as
+stateful nodes inside Elements trees.
 
 V2 is a conceptual catalog migration, not a source-compatible namespace swap.
 Ordinary V2 helper keys are optional and keyword-only. The library derives a
@@ -36,6 +36,7 @@ runtime-validated.
 | V1 export | V2 argument migration | V2 return / state | Callback and form policy | Visual and interaction change |
 |---|---|---|---|---|
 | `select` | Keep `label`, `options`; use `value=` or `index=`; add `format_func`; `key` is optional | Original Python option value or `None` | `on_change`; supported in forms | **Migrated.** Generated shadcn Select backed by Base UI; one isolated ShadowRoot, native top-layer popup, zero iframe instead of V1 trigger + popup iframes |
+| `combobox` | New searchable choice API with single or multiple `selection_mode` | Original Python option, list of options, or `None` | Local filtering; `on_change` after selection commits | **Added.** Generated shadcn Combobox backed by Base UI in its own ShadowRoot top layer |
 | `dropdown_menu` | Order changes from `items, label` to `label, items`; add `format_func`; `menu_label`, `disabled`, `width` are explicit | Transient original Python item or `None`, replacing the V1 internal content-state dictionary | `on_select`; rejected in forms | **Migrated.** Generated shadcn/Base UI non-modal menu in the instance ShadowRoot; no popup iframe or document mutation |
 | `button` | Rename `text` to `label`; remove `class_name` and arbitrary `**kwargs`; add `size`, `disabled`, `width` | One-rerun `bool` click trigger | `on_click`; rejected in forms | **Migrated.** Generated shadcn Button; no iframe |
 | `breadcrumb` | Accept item mappings or `BreadcrumbItem`; remove `class_name`; add accessible `label`, `width` | Typed transient `BreadcrumbSelection` or `None` | `on_select`; rejected in forms | **Migrated.** Native links and current-page semantics; safe URLs; no iframe |
@@ -50,6 +51,7 @@ runtime-validated.
 |---|---|---|---|---|
 | `checkbox` | V1 `mode/options` groups become one `checkbox(label, value=...)` call per option | Persistent scalar `bool`, not V1's ID-to-boolean mapping | `on_change`; supported in forms | **Adapter required.** Generated shadcn/Base UI Checkbox; group layout belongs to the Streamlit app |
 | `input` | Put `label` first and use `value`; keep `type`, `placeholder`; add disabled, max length, width | Persistent `str`; commits on blur or Enter | `on_change`; supported in forms | **Migrated.** Generated shadcn Input; no iframe |
+| `input_group` | New Input composition with validated prefix, suffix, start icon, clear, and copy addons | Persistent `str`; commits on blur, Enter, or clear | `on_change`; copy remains browser-local | **Added.** Generated shadcn Input Group; arbitrary React or Streamlit addons are not accepted |
 | `textarea` | Put `label` first and use `value`; replace arbitrary `**kwargs` with rows, disabled, max length, width | Persistent `str`; commits on blur or Ctrl/Cmd+Enter | `on_change`; supported in forms | **Migrated.** Generated shadcn Textarea; no iframe |
 | `input_otp` | Put `label` first and use `value`; keep max length; add pattern, disabled, width | Persistent `str`; commits on completion or blur | `on_change`; supported in forms | **Migrated.** Generated shadcn Input OTP source |
 | `accordion` | Item mappings or `AccordionItem`; use `value` and `selection_mode`; remove `class_name` | Single item value/`None`, or a list in multiple mode | `on_change`; supported in forms | **Migrated.** Controlled generated shadcn/Base UI Accordion |
@@ -79,7 +81,9 @@ runtime-validated.
 | `table` | DataFrame or record iterables remain; V1 `{dataKey,title}` and V2 `{key,label}` columns are both accepted; rename `maxHeight` to `max_height`; add `caption`, `width` | Stateless `None` | None | **Migrated.** Generated shadcn Table with bounded primitive cells |
 
 V2 also adds `badge`, `separator`, `skeleton`, and the single-root nested
-composition API `elements`, plus typed descriptors: `Choice`, `MenuItem`,
+composition API `elements`. Elements includes Button Group, Dialog, Empty,
+Field, Spinner, and Tooltip composition in addition to Combobox and Input
+Group nodes. Typed descriptors include `Choice`, `MenuItem`,
 `AccordionItem`, `BadgeItem`, `BreadcrumbItem`, `BreadcrumbSelection`,
 `TableColumn`, `ElementEvent`, `ElementHandle`, and `ElementsBuilder`.
 
@@ -100,7 +104,7 @@ multi-iframe architecture and receive no V2 adapters:
 `hover_card_content`, `dialog_layer`, `option_choosen_handler`, and
 `date_choosen_handler`.
 
-Carousel, Command, Dialog, Resizable, and Toast appeared in README catalog
+Carousel, Command, Resizable, and Toast appeared in README catalog
 text but have no stable V1 root wrapper. They are future product candidates,
 not missing V2 parity claims.
 

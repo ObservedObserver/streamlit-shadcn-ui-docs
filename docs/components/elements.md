@@ -50,11 +50,12 @@ receive the decoded Python value; action callbacks receive the node identity,
 event type, payload, and sequence number. Multiple actions created in the same
 browser task are delivered as one ordered batch.
 
-Available composition primitives are `stack`, `grid`, `card`, `card_header`,
-`card_content`, and `card_footer`. Content nodes include `heading`, `text`,
-`code`, `badge`, `separator`, `progress`, `image`, and `link_button`.
-Interactive nodes include `input`, `number_input`, `textarea`, `checkbox`, `switch`, `slider`,
-`radio_group`, `select`, and `button`.
+Available composition primitives include `stack`, `grid`, Card slots, Button
+Group, Dialog, Empty, Field Set, Field Group, Field, and Tooltip. Content nodes
+include `heading`, `text`, `code`, `badge`, `separator`, `progress`, `spinner`,
+`image`, and `link_button`. Interactive nodes include `input`, `input_group`,
+`number_input`, `textarea`, `checkbox`, `switch`, `slider`, `radio_group`,
+`select`, `combobox`, and `button`.
 
 An Elements tree can contain library-owned React components only. Native
 Streamlit commands such as `st.dataframe` and `st.write` cannot be inserted as
