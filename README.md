@@ -11,10 +11,10 @@ The main repository is the source of truth for `Home.py`, `site_pages/`,
 The app uses Streamlit Components V2 with checked-in shadcn source backed
 by Base UI. It requires Python 3.10 or newer and Streamlit 1.60 or newer.
 
-The deployed examples are pinned to `streamlit-shadcn-ui==1.3.0`. The catalog
-includes the new Button Group, Combobox, Dialog, Empty, Field, Input Group,
-Spinner, and Tooltip pages. **Use Cases > V2 Elements** demonstrates composing
-multiple controls in one React tree.
+The deployed examples are pinned to `streamlit-shadcn-ui==1.4.0`. The Charts
+page demonstrates line, area, bar, pie, radar, and radial charts with shadcn's
+colorful light and dark palettes. **Use Cases > V2 Elements** demonstrates
+composing multiple controls in one React tree.
 
 ## Installation
 
