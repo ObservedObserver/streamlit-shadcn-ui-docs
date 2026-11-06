@@ -1,5 +1,10 @@
 # Streamlit Shadcn UI documentation
 
+> Draft only: this branch prepares the next component documentation update.
+> Its new examples require an unpublished package and must not be deployed
+> with the retained `streamlit-shadcn-ui==1.4.0` pin. Complete the
+> [promotion checklist](docs/p0-promotion.md) before merging.
+
 [![PyPI - Version](https://img.shields.io/pypi/v/streamlit-shadcn-ui)](https://pypi.org/project/streamlit-shadcn-ui/)
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://shadcn.streamlit.app/)
 
