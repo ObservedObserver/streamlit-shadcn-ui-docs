@@ -1,10 +1,5 @@
 # Streamlit Shadcn UI documentation
 
-> Draft only: this branch prepares the next component documentation update.
-> Its new examples require an unpublished package and must not be deployed
-> with the retained `streamlit-shadcn-ui==1.4.0` pin. Complete the
-> [promotion checklist](docs/p0-promotion.md) before merging.
-
 [![PyPI - Version](https://img.shields.io/pypi/v/streamlit-shadcn-ui)](https://pypi.org/project/streamlit-shadcn-ui/)
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://shadcn.streamlit.app/)
 
@@ -16,10 +11,15 @@ The main repository is the source of truth for `Home.py`, `site_pages/`,
 The app uses Streamlit Components V2 with checked-in shadcn source backed
 by Base UI. It requires Python 3.10 or newer and Streamlit 1.60 or newer.
 
-The deployed examples are pinned to `streamlit-shadcn-ui==1.4.0`. The Charts
-page demonstrates line, area, bar, pie, radar, and radial charts with shadcn's
-colorful light and dark palettes. **Use Cases > V2 Elements** demonstrates
-composing multiple controls in one React tree.
+The 1.5.0 documentation update adds Sheet, Item, an interactive Data Table,
+and Tabs, Accordion, Collapsible and Scroll Area composition in Elements.
+The Data Table example opens a Sheet to edit and save a record. The catalog
+contains 49 documented components.
+
+The examples pin the published `streamlit-shadcn-ui==1.5.0` package. The
+documentation host pins Streamlit 1.60.0 and Starlette 1.3.1, the combination
+used for P0 acceptance. The [promotion checklist](docs/p0-promotion.md) tracks
+the separate installed-package and live-site verification.
 
 ## Installation
 
